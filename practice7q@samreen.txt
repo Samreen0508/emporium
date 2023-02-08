@@ -1,0 +1,77 @@
+
+14. Show the course description, section number, starting date and time of the courses Joseph
+German is taking.
+select *from section;
+select *from course;
+select c.description,s.section_no,s.start_date_time
+from section s inner join course c
+where instructor='Joseph German';
+
+15. Using a subquery construct, determine which sections the student Henry Master is enrolled
+in.
+select *from section;
+select *from enrollment;
+SELECT section_id
+ FROM enrollment
+WHERE student_id IN
+      (SELECT student_id
+         FROM student
+        WHERE last_name = 'Masser'
+          AND first_name = 'Henry')
+umeric_grade of those students who have the grade code type as ‘FI’.
+select student_id,section_id,numeric_grade from grade where grade_type_code in('FI');
+
+
+/*31.    Write a query that accomplishes the following result. The output shows you all the days of the week where sections 99, 89, and 105 start. Note the order of the days.
+DAY     SECTION_ID
+---         ----------
+Mon     99
+Tue     89
+Wed     105*/
+select  substr(to_char(start_date_time,'fmday-mon-yy'),1,instr(start_date_time,'-'))as "day",section_id
+from section
+where section_id in('89','99','105')
+order by start_date_time;
+
+
+--32.    Determine the highest grade achieved for the midterm within each section.
+select grade_type_code,section_id,max(numeric_grade) from grade
+group by grade_type_code,section_id
+having grade_type_code='MT'
+order by section_id;
+
+--33.    Display the state as 'New York' for NY, 'New Jersey' for NY and 'Others' for any other state.
+select decode(loc,'NEW YORK','NY',
+'DALLAS','DS',
+'BOSTON','BS',
+'OTHERS')AS "state" from dept;
+
+--34.    Display the first and last names of students who received 99 or more points on the class project.
+select last_name,numeric_grade from ss1,grade where ss1.student_id=grade.student_id and grade.numeric_grade>=99;
+
+--35.     Display the course number and description of courses with no enrollment. Also include courses which have no section assigned.
+select course_no,description from course
+where course_no not in(select  course_no from section where course.course_no=section.course_no);
+
+--36.    Determine the top three zip codes where most of the students live.
+select zip,count(zip) from ss1
+group by zip
+--having count(zip)>10
+order by count(zip)desc;
+
+--37.    Write a SQL statement, using a set operator, to show which students enrolled in a section on the same day they registered.
+select student_id,enroll_date from enrollment
+intersect
+select student_id,enroll_date from enrollment;
+
+--38.    Show the course number, description, course cost, and section ID for courses that cost 1195 or more. Include courses that have no corresponding section.
+select  c.course_no,c.description,cost,s.section_id from  course c,section s where cost>=1195;
+--and c.course_no in(select course_no from section);
+
+--39.    Rewrite the following query to replace all occurrences of the string Unix with Linux.
+--SELECT ‘I develop software on the Unix platform’  FROM dual.
+select replace('I develop software on the Unix platform','Unix','Linux') from dual;
+
+--40.    List all the rows of the GRADE_TYPE table that were created in the year 1998.
+select * from grade_type where created_date like'%98';
+select * from grade_type where created_date like'%98';

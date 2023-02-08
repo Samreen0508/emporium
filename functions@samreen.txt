@@ -1,0 +1,174 @@
+Operator precedence
+select ename ,job, sal,sal-300 from emp;
+select ename,job,al,sal+400 from emp;
+
+select ename,12*sal+100 from emp;
+select sal,sal*12 from emp;
+
+select ename,sal,sal+12*100 from emp;
+
+select ename,12*sal*comm from emp;---here we r gtting comm null
+
+select job||ename  from emp;
+
+select distinct *from emp where deptno=&deptno; 
+select distinct *from emp where sal=&sal;
+select distinct *from emp where ename=&ename and job=job order by column;
+
+select ename,length(ename) from emp;
+select *from emp where length(sal)=3;
+
+select instr('pallavi reddy') from dual;
+
+select *from emp
+select ename from emp where length(ename)=5;
+operator precedence
+select sal,sal*12 from emp;
+select ename,sal from emp where sal=&sal and deptno=10;
+
+select ename||job from emp;
+select empno,ename "name" from emp;
+select empno,ename as name from emp;
+
+Concatenation
+select ename||'is working as'||job from emp;
+select ename||' is working as '||job from emp;
+
+select ename||q'['s assigned manager id is:]'||mgr as manager from emp;
+select ename||q'['s assigned manager id is:]'||mgr from emp;
+select ename||q'['s assigned manager id is:]'||mgr "Manager" from emp;
+select ename||q'['s assigned manager id is:]'||mgr from emp;
+select ename||q'[' and his employee id is:']'||mgr "Manager" from emp;
+
+desc emp;
+select ename,sal from emp where sal<=3000;
+select ename,sal from emp where sal between 2000 and 3000;
+select ename,sal from emp where sal in(2000,3000);
+select ename,mgr from emp where mgr is null;
+select ename,mgr from emp where mgr is not null;
+select ename,mgr,comm from emp where comm is null;
+select ename,mgr,comm from emp where comm is not null;
+
+select ename,mgr,comm from emp where mgr is not null;
+select ename,mgr,nvl(comm) from emp where comm is not null;
+select ename,12*sal+100 from emp;
+select ename,12*sal*nvl(comm,1) "annual salary" from emp;
+
+select empno,ename,hiredate from emp order by hiredate;
+select empno,ename,hiredate from emp order by hiredate desc;
+
+select ename,empno,mgr from emp where job=&job;
+select ename,empno,mgr from emp where ENAME=&job;
+select ename,empno,mgr from emp where deptno=10 and job=&job;
+select ename,empno,mgr from emp where  deptno=10 and job=&job 
+and ename=&ename;
+
+select &ename,empno,mgr,deptno from emp where deptno=10 and job=&&job;---____*
+
+Define deptno=10
+select *from emp where deptno=&deptno;------gives dept 10 values & doesnt prompt
+Define deptno=10
+select *from emp -----gives all values
+Define deptno=10
+select *from emp where deptno=deptno;
+
+Define deptno=10
+select *from emp where deptno=&deptno;
+Define deptno=10
+select *from emp 
+Define deptno=10
+select *from emp where deptno=deptno;
+
+SINGLE ROW FUNCTIONS
+
+select lower(ename) from emp;
+select upper(ename) from emp;
+select INITCAP(ename) from emp;
+select concat('Smith','Jones')from emp;
+
+SUBSTRING
+
+select substr(job,1,5)from emp;
+select substr('SALESMAN',-1,5) from emp;
+select substr(ename,1,2) from emp;
+
+select instr('SALESMAN','S') FROM EMP;
+select instr('SALESMAN','A')FROM EMP where job='SALESMAN';
+select instr('SALESMAN','A',1,2) from emp where job='SALESMAN';
+
+
+select lpad('SMITH',10,'*') FROM EMP;
+select lpad(sal,10,'*') from emp;
+
+
+select rpad(sal,10,'*') from emp;
+select rpad(sal,10,'*') from emp;
+select rpad(sal,10,'&') from eMP;
+
+select replace ('jack and jue','j','BL') from dual
+select replace('Back and bill','kl','k') from dual;
+
+select instr('pallavi reddy','p') from dual;
+select trim ('pallavi ')from dual;
+select trim ('p' from 'pallavi') from dual;
+
+DATE FUNCTIONS
+
+select round(45.926,2) from dual;
+select trunc(45.926,2) from dual;
+
+select round(388.4636,-1) from dual;
+select  round(389,-2) from dual;
+
+select ename,round(sysdate-hiredate)/7 weeks from emp;
+select ename,trunc(sysdate-hiredate)/7 weeks from emp;
+
+select ename,round(sysdate-hiredate)/7 weeks from emp;
+select ename,trunc(sysdate-hiredate)/7 weeks from emp;
+select ename,round(sysdate-hiredate)/365 year from emp;
+
+select * from emp where months_ between(sysdate,hiredate);
+
+select MOD(1300,600) from dual;
+
+select months_between(sysdate,hiredate) from emp;
+select ename,sysdate, add_months (sysdate,4)from emp;
+
+select ename,sysdate,next_day(sysdate,'monday') from emp;
+select ename,sysdate,last_day(sysdate,'month') from emp
+
+select ename, sysdate,last_day(sysdate)from emp;
+
+slect case
+(deptno when 10 then 'BI', 
+        when 20 then 'IT',
+else  'java' end) as dnname from emp;
+
+select ename,job from emp where sal=(select min(sal)from emp));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+ 

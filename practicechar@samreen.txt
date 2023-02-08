@@ -1,0 +1,47 @@
+select ename from emp where REGEXP_LIKE(ename,'[[:alpha:]]');
+SELECT EMPNO FROM EMP WHERE REGEXP_LIKE(EMPNO,'[[:digit:]]');
+select ENAME from emp where regexp_like(job,'^M.NAGER $');
+SELECT ENAME FROM EMP WHERE REGEXP_LIKE(ENAME,)
+select DISTINCT (job) from emp where regexp_like(job,'^S..LESMAN$');
+select ename,job from emp where regexp_like(job,'^M.....R$');
+
+select DISTINCT (job) from emp where regexp_like(job,'^S..LESMAN$');
+select ename,job from emp where regexp_like(job,'^M.....R$');
+SELECT ename,job from emp where regexp_like(ename,'S?S') and regexp_like(job,'C?K');
+select ename,job from emp where regexp_like(ename,'S?S') and regexp_like(job,'C?K');
+
+select job from emp where regexp_like(job,'S?S');
+select distinct(job) FROM EMP where regexp_like(job,'S?S');
+select ename,job from emp where regxp_like(ename,'S*S');
+
+
+select * from emp where regexp_like(ename,'^J(O|A)(N|M)ES');
+
+select * from student_1 where regexp_like(last_name,'o{2,}');
+
+select ename,job from emp where regexp_like(ename,'^SM.TH$');
+select job from emp where regexp_like(job,'S?S');
+select distinct(job) FROM EMP where regexp_like(job,'S?S');
+select ename,job from emp where regexp_like(JOB,'+S');
+
+5.	Write a SQL statement to retrieve students who have a last name with the 
+lowercase letter o occurring three or more times.
+SELECT last_name FROM student_1 WHERE REGEXP_LIKE(last_name,'{2,o}');
+select last_name from student_1 where regexp_like(last_name,'o{2,}');
+select LAST_NAME from student_1 where regexp_like(last_name,'o{2,3}');
+
+
+select LAST_NAME from student_1 where regexp_like(last_name,'o{1,3}');
+
+select ename from emp where regexp_like(ename,'[[:lower:]]');
+ select ename from emp where regexp_like(ename,'J(O|A),(M|N)ES');
+ SELECT *FROM EMP;
+ select * from emp where regexp_like(ename,'^J(O|A)(N|M)ES');
+
+
+
+
+
+
+
+

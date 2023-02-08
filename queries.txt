@@ -1,0 +1,85 @@
+
+
+select *from customer,salesman where customer.sid=salesman.sid;
+
+select customer.cname,salesman.sid from customer,salesman where
+ customer.sid=salesman.sid;
+
+
+select cname.customer,sid.salesman from customer,salesman where
+ customer.sid=salesman.sid;
+
+select emp.ename,dept.loc 
+from emp inner join dept 
+on emp.deptno=dept.deptno;
+
+select ename,job from emp where ename='Blake' and job='MANAGER';
+
+select e.empno, e.enmae,e.job,e.sal,e.hiredate,
+d.deptno,d.dname,d.loc,s.salgrade from emp e,dept d,salgrade s 
+where e.deptno=d.deptno and sal between losal and hisal;
+
+SELECT  a.ord_no,a.purch_amt,
+b.cust_name,b.city 
+FROM orders a,customer b 
+WHERE a.customer_id=b.customer_id 
+AND a.purch_amt BETWEEN 500 AND 2000;
+
+
+select ename from emp where sal like'----%0';
+
+select customer.cname,salesman.sid from customer,salesman
+where customer.sid=salesman.sid;
+
+select e.empno, e.ename,e.job,e.sal,e.hiredate,
+d.deptno,d.dname,d.loc,s.grade from emp e,dept d,salgrade s 
+where e.deptno=d.deptno and
+sal between losal and hisal
+order by grade;
+
+select customer.cname,salesman.sid,salesman.commision from customer,salesman
+where customer.sid=salesman.sid and salesman.commision>0.12; 
+
+select customer.cname,salesman.sid,salesman.commision from customer,salesman
+where customer.sid=salesman.sid and salesman.commision>0.12 and
+customer.city!=salesman.city;
+
+select *from emp where ename in('BLAKE', 'JAMES')and job='MANAGER';
+
+SELECT c.cust_name AS "Customer Name",
+       c.city AS "Customer City",
+       s.name AS "salesman",
+       s.city AS "salesman City",
+       s.commision
+  FROM customer c
+  INNER JOIN salesman s
+    ON c.sid = s.sid
+  WHERE s.commision > 0.12
+    AND c.city != s.city;
+
+select *from dept;
+
+select *from emp;
+
+select ename,job from emp; 
+
+select ename,sal from emp;
+
+select empno,sal*12 from emp; 
+
+select ename from emp where deptno=10;
+
+select ename,sal from emp;
+
+create table empsam1 as (select * from emp where (1=1));
+
+select customer.cname,c.city,s.sid, from customer,salesman
+where customer.sid=salesman.sid and
+c.city=s.city;
+
+
+SELECT  a.ord_no,a.purch_amt,
+b.cust_name,b.city 
+FROM orders a,customer b 
+WHERE a.customer_id=b.customer_id 
+AND a.purch_amt BETWEEN 500 AND 2000;

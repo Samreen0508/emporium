@@ -1,0 +1,115 @@
+select instr('pallavi reddy','a',1,1) from dual;
+
+select 'sanjay' ||q'['s, 'friend is' ]'||'Srikar' from dual';
+
+Select substr('pallavi Reddy',1,instr('pallavi Reddy',' ')) from dual;
+
+select to-char(hiredate,'day')='sunday' from emp;
+
+select *from (select ename,sal from emp order by sal)where rownum<5 order by rownum;-----to find  last n records
+
+select * from (select rownum r,ename,job,sal from emp) where r=4;
+
+select * from (select rownum r,ename,job,sal from emp) where r=(select count(*) from emp);*****
+
+select substr('psrikar@startapps.com',1,instr('psrikar@startapps.com','@'))  name,========******
+substr('psrikar@startapps.com',instr('psrikar@startapps.com','@')) domain
+from dual;
+
+select substr('psrikar@startapps.com',1,instr('psrikar@startapps.com','@')-1)  name,
+substr('psrikar@startapps.com',instr('psrikar@startapps.com','@'),instr('psrikar@startapps.com','.')-1) domain,
+substr('psrikar@startapps.com',instr('psrikar@startapps.com','.'))
+from dual;
+
+select ename,sal,
+(case
+when sal >800 then 'poor'
+when sal >1500 then 'average'
+when sal >2500 then 'good'
+when sal >3000 then 'execellent'
+end) grade from emp;
+
+select dnAme from dept where instr(dname,'O',1,1)!=0;======DISPLAY DNAME WITH LETTER O
+
+SUBQUERIES
+ employees who receive a higher salary than the employee with ID 163.
+ Return first name, last name.
+SELECT first_name, last_name 
+FROM employees 
+WHERE salary > 
+( SELECT salary  
+FROM employees 
+WHERE employee_id=163
+);
+
+employees whose salary matches the lowest salary of any of the departments.
+ Return first name, last name and department ID. 
+SELECT first_name, last_name, salary, department_id  
+FROM employees  
+WHERE salary IN  
+( SELECT MIN(salary)  
+FROM employees  
+GROUP BY department_id 
+);
+
+employees who earn more than the average salary. Return employee ID, first name, last name.
+SELECT employee_id, first_name,last_name  
+FROM employees  
+WHERE salary >  
+( SELECT AVG(salary)  
+FROM employees 
+);
+
+employees who report to that manager whose first name is ‘Payam’. 
+Return first name, last name, employee ID and salary.
+SELECT first_name, last_name, employee_id, salary  
+FROM employees  
+WHERE manager_id = 
+(SELECT employee_id  
+FROM employees  
+WHERE first_name = 'Payam' 
+);
+
+employees who work in the Finance department. Return department ID, name (first), job ID and department name. 
+
+SELECT e.department_id, e.first_name, e.job_id , d.department_name  
+FROM employees e , departments d  
+WHERE e.department_id = d.department_id  
+AND  d.department_name = 'Finance';
+
+ employees who do not work in the departments where managers’ IDs are between 100 and 200 (Begin and end values are included.). 
+Return all the fields of the employees.
+SELECT * 
+FROM employees 
+WHERE department_id NOT IN 
+(SELECT department_id 
+FROM departments 
+WHERE manager_id BETWEEN 100 AND 200);
+
+employees who get second-highest salary. Return all the fields of the employees.
+
+SELECT * FROM employees 
+WHERE employee_id IN 
+(SELECT employee_id 
+FROM employees  
+WHERE salary = 
+(SELECT MAX(salary) 
+FROM employees 
+WHERE salary < 
+(SELECT MAX(salary) 
+FROM employees)));  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

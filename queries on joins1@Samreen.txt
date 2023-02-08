@@ -1,0 +1,43 @@
+Write a SQL statement to find the details of an order i.e. order number, order date, amount of order, 
+which customer gives the order and which salesman works for that customer 
+and how much commission he gets for an order.
+select o.orderno,o.odate,o.oamt,c.cname,s.sname,s.commission
+from orders o inner join customers c
+on o.cid=c.cid inner join salesman s 
+on c.sid=s.sid;
+
+Write a SQL statement to make a join within the table’s salesman, customer and orders 
+in such a form that the same column of each table will appear once and only the relational rows will come. 
+select *from salesman natural join customer
+natural join orders;
+
+Write a SQL statement to make a list in ascending order for the customer who works either
+through a salesman or by own.
+select c.cname,s.sname 
+from salesman s left join customer 
+on s.sid=c.sid;
+
+Write a SQL statement to make a list in ascending order for the customer who holds a grade less than 300
+and works either through a salesman or by own. 
+select c.cname,c.cname,s.sname,c.grades
+from customer c,left join salesman s
+on c.sid=c.cid
+where grade <300
+order by c.cid;
+
+9. Display the Employees Names, DNames of Employees, DLoc of Employees.
+Managers Names, DNames of Managers  & DLocs of Managers?
+select e.ename,d.dname,d.dloc,e1.ename m_name,d1.dname m_dname,d1.loc m_loc 
+from emp e,dept d,emp e1,dept d1 
+and e.mgr=e1.empno and
+ e1.deptno=d1.deptno;
+
+From the following tables write a SQL query to display the customer name, customer city, grade,
+salesman, salesman city.The results should be sorted by ascending customer_id
+select c.cname, c.city,c.grade,s.sname,s.city
+from customer c inner join salesman s
+on c.city=s.city
+order by c.cid;
+
+
+

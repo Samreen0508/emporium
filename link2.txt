@@ -1,0 +1,2 @@
+static methods always call with the name of class
+https://github.com/niitagile/StratExample/tree/main/CoreJava/Arrays

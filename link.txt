@@ -1,0 +1,1 @@
+https://github.com/tweichle/w3resource-SQL-Exercises/blob/master/SQL%20Exercises%20-%20JOINS%20on%20Sales%20Database.sql

@@ -1,0 +1,100 @@
+RDMS CONCEPTS
+
+What is RDBMS?
+A Relational database management system (RDBMS) is a database management system (DBMS) that is based on the relational model
+table--
+row---
+column--
+null value
+
+CONSTRAINTS
+unique
+not null
+check
+primary key
+foreign key
+
+DDL
+Create
+alter
+drop
+truncate
+
+DML
+Insert 
+update
+delete
+
+DCL
+Grant
+Revoke
+
+TCL
+commit
+rollack
+savepoint
+
+DQL
+select
+
+TYPSOF DBMS
+Hierarchical
+network
+RDMS
+Object oriented
+
+TYPES OF RELATIONSHIPS
+1 to 1
+1 to many
+many to many
+
+
+ACID rules
+Atomicity - the transaction must be completed fully. If it is not completed fully it will not be recorded.
+Consistency - any change must not break the database. ...
+Isolation - a transaction must be isolated and not interfere with another transaction.
+Durability - a transaction must remain in the database.
+
+TYPES OF DBMS
+
+Relation Database
+A relational database management system (RDBMS) is a system where data is organized in two-dimensional tables using rows and columns.
+
+Object Oriented Database
+It is a system where information or data is represented in the form of objects which is used in object-oriented programming.
+
+Hierarchical Database
+It is a system where the data elements have a one to many relationship (1: N). Here data is organized like a tree which is similar to a folder structure in your computer system.
+
+Network database
+A Network database management system is a system where the data elements maintain one to one relationship (1: 1) or many to many relationship (N: N).
+
+CODD RULES
+
+NORMALISATION
+NORMALISATION FORMS
+
+JOINS
+TYPES OF JOINS
+inner
+left outer
+right outer
+self
+cartesian
+
+SET OPERATORS
+Union
+union all
+intersect
+minus
+
+AGGREGATE FUNCTIONS
+avg
+count
+min
+max
+order by
+group by
+having
+
+

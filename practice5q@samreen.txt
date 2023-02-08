@@ -1,0 +1,160 @@
+22.How to find the 2nd lowest salary from employee using sub queries 
+and correlated sub queries.
+SELECT *
+FROM employees e
+WHERe (SELECT COUNT(DISTINCT salary ) 
+            FROM employees
+            WHERE  salary <= e.salary)=2;
+
+-1.Write a SELECT statement that lists the last names of students living in either zip code 10048, 11102, or 11209.
+select  last_name from ss1 where zip in(10048,11102,11209);
+
+--2.Write a SELECT statement that lists the first and last names of instructors with the letter i (either uppercase or lowercase) in their last name, living in zip code 10025.
+select first_name,last_name from instructor where last_name like'%I%' or last_name like'%i%' and zip in(10025);
+
+--3.Write a SELECT statement that lists descriptions of courses for which there are prerequisites and that cost less than 1100.
+select description  from course where  prerequisite<1100 and cost<1100;
+
+--4.Show the salutation, first name, and last name of students with the last name Grant. Order the result by salutation in descending order and by first name in ascending order.
+select salutation,last_name 
+
+
+5.Write a SQL statement to retrieve students who have a last name with the lowercase letter o occurring three or more times.
+select last_name from ss1 where last_name like'%0%' or last_name like'%oo%' or last_name like'%ooo%';
+
+/*6.Using functions in the SELECT list and WHERE and ORDER BY clauses, write a SELECT statement that returns 
+course numbers and course descriptions from the COURSE table and looks like the following result set. 
+Use the SQL Developer Run Script icon to display the result in fixed-width format.
+Description
+204.......Intro to SQL
+130.......Intro to Unix
+25........Intro to Programming
+230.......Intro to the Internet
+120.......Intro to Java Programming
+240.......Intro to the BASIC Language
+20........Intro to Information Systems*/
+select rpad(course_no,10,'.')||description as "description" from course;
+
+--7.List the last names, first names, and phone numbers of students who do not have phone numbers. Display 212-555-1212 for the phone number.
+select nvl(phone,'212-555-1212') from ss1;
+
+--8.Write a SELECT statement that determines the total number of students enrolled. Count each student only once, no matter how many courses the student is enrolled in.
+select count(distinct student_id)from enrollment;
+
+--9.Determine the average cost for all courses. If the course cost contains a null value, substitute the value 0.
+select avg(nvl(cost,0)) from course;
+
+--10.Write a SELECT statement that determines the date of the most recent enrollment.
+select max(enroll_date) from enrollment;
+
+--11.Show a list of prerequisites and count how many times each appears in the COURSE table. Order the result by the PREREQUISITE column.
+select PREREQUISITE,count(distinct PREREQUISITE) 
+from course
+group by PREREQUISITE
+order  by PREREQUISITE;
+
+--12.Show all the different companies for which students work. Display only companies in which more than four students are employed.
+select  employer,count(employer) from ss1
+group by employer
+HAVING count(employer)>4
+order by  count(empl;
+
+--13.Select the course description, section number, and location for sections meeting in location L211.
+select  c.description,s.section_no,s.location from course  c,section s
+where  c.course_no=s.course_no and s.location in ('L211');
+
+--14.Show the course description, section number, starting date and time of the courses Joseph German is taking.
+select c.description,s.section_no,s.start_date_time from course c,section s
+where c.course_no=s.course_no and c.description like'Oracle Tools' ;
+
+--15.Using a subquery construct, determine which sections the student Henry Master is enrolled in.
+select section_no from section 
+where section_id=(select section_id from enrollment where  student_id=(select distinct student_id from ss1 where last_name like'Axch')); 
+
+--16.Select the student ID, course number, enrollment date, and section ID for students who enrolled in course number 20 on January 30, 2007.
+select e.student_id,e.section_id,c.course_no,e.enroll_date from enrollment e,course c
+where e.enroll_date like'30-JAN-07' and course_no=20;
+
+--17.Using subquery display Show the sections with the lowest course cost and a capacity equal to or lower than the average capacity. 
+--Also display the course description, section number, capacity, and cost.
+select s.section_id
+from section s 
+where course_no in(select course_no from course where cost=(select min(cost) from course))
+and capacity<=(select avg(capacity) from section);
+
+--18.Select the course number and total capacity for each course. Show only the courses with a total capacity less than the average capacity of all the sections.
+select course_no,sum(capacity) from section
+group by course_no
+having sum(capacity)<avg(capacity);
+
+--19.Determine the top five courses with the largest numbers of enrollments.
+select course_no,sum(nvl(capacity,0)) from section
+group by course_no
+order by sum(nvl(capacity,0))desc;
+
+--20.Display all the sections where classes start at 10:30 AM.
+select section_id from section where  start_date_time like'14%';
+
+/*21.Select the distinct course costs for all the courses.
+If a course cost is unknown, substitute a zero. 
+Format the output with a leading $ sign, and separate the thousands with a comma. 
+Display two digits after the decimal point.*/
+select to_char(nvl(cost,0),'L99,999.00') cost from course;
+
+--22.How to find the 2nd lowest salary from employee using sub queries and correlated sub queries.
+select sal from emp where sal=(select  min(sal) from emp where sal<>(select min(sal) from emp));
+
+
+--24.Find the students who are not enrolled in any classes. Write three solutions: a set operation, a subquery, and a correlated subquery.
+select last_name from ss1
+where student_id not in(select student_id  from enrollment);
+
+select student_id from student_1 intersect select student_id from enrollment;
+
+select student_id from student_1 s where not exists(select student_id from enrollment e where s.student_id=e.student_id);
+
+--25.How to fetch last N records from the employee tables.
+select * from(select rownum r,emp.* from emp)where r>(select count(*)-5 from emp);
+
+
+--26.Write a SQL statement that retrieves data from the COURSE table for courses that cost 1195
+and whose descriptions start with Intro, sorted by their prerequisites.
+select course_no,description,cost,prerequisite 
+from course 
+where description like 'Intro%' and cost=1195
+order by prerequisite;
+
+--27.Create another SQL Statement that retrieves data from the STUDENT table for students whose last names begin with A,B, or C,
+and who work for Competrol Real Estate, sorted by their last names.
+select *from student_1;
+select student_id,last_name,employer 
+from student_1
+where last_name like 'A,B,C%' and employer='Competrol Real Estate'
+order by last_name;
+
+--28. Display the course name and cost of those courses whose cost is in the
+range of 3000 and 7000.
+select *from course;
+select course name,cost where cost between 3000 and 7000;
+
+29.	Determine which student does not have the first letter of her or his last name 
+capitalized. Show the STUDENT_ID and LAST_NAME columns.
+select student_id,last_name,INITCAP(LAST_NAME) from student_1;
+
+30.30.	Display the student_id,  section_id and numeric_grade of those students who 
+have the grade code type as ‘FI’.
+SELECT *FROM GRADE;
+select student_id,section_id,numeric_grade from grade
+where grade_type_code='FI';
+
+
+
+
+
+
+
+--
+
+
+
+

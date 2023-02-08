@@ -1,0 +1,78 @@
+select ename,sal,sum(sal) over() sum,count(*) over() count from emp;
+select count(sal),ename from emp;
+select count(sal) over() ename from emp;
+select ename,sal,sum(sal) over() sum ,count(*) over() count from emp
+where deptno=20;
+
+select ename,sal,deptno,lag(ename) over(partition by deptno order by ename) from emp;
+
+select ename,rank() over(order by ename) from emp;
+
+select ename,dense_rank() over(order by ename) from emp;
+
+select ename,row_number() over(order by ename) from emp;
+
+select ename,rank() over(order by ename) c1,
+dense_rank() over(order by ename) c2,
+row_number() over(order by ename) c3
+from emp;
+
+select ename,sal,rank() over(order by sal),
+dense_rank() over(order by sal),
+row_number() over(order by sal)
+from emp;
+
+select ename,deptno,dense_rank() over(order by deptno) from emp;
+
+select ename,deptno,rank() over(order by deptno) from emp;
+
+elect ename,job,count(*) over(partition by job) job_count from emp;
+
+select lag(ename) over(order by ename)name from emp
+order by ename;
+
+select ename,sal,job,lag(ename) over(order by sal) from emp;
+
+select ename,sal,lag(sal) over(order by ename)as "prior" from emp;
+
+select ename,lead(ename) over(order by ename) from emp;
+
+select ename,lag(ename) over(order by ename),
+lag(sal) over(order by sal),
+lead(ename) over(order by ename)
+from emp;
+
+
+
+select * from emp,salgrade 
+where deptno=(select deptno from dept where dname='SALES')
+and sal between losal and hisal;
+
+select ename from emp where job in(select job from emp where job<>'MANAGER');
+
+select ename from emp
+where length(ename)<=4;
+
+select dname,loc from dept where dname like'S%' and loc like'%k';
+
+select e.ename from emp e,emp e1
+where e.empno=e1.mgr and e.ename='JONES';
+
+select ename,sal,sal+sal/100*20 total from emp
+where sal+sal/100*20>3000;
+
+select e.ename,d.dname from emp e,dept d
+where e.deptno=d.deptno;
+
+select ename,dname 
+from emp,dept 
+where e.deptno=d.deptno and d.dname='sales';
+
+select * from emp where sal=(select min(sal) from emp where sal in 
+(select distinct sal from emp order by sal desc));
+
+select ename,sal from emp where sal in(select max(sal) from emp);
+
+select ename,sal from emp e 
+where 2-1 =(select count(distinct sal) from emp e1
+where e1.sal>e.sal);

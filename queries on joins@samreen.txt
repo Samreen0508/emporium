@@ -1,0 +1,80 @@
+WAQTD names and dnames of all the employees even though 
+the employees Don’t work in any dept .
+➢
+SELECT ENAME , DNAME 
+FROM EMP , DEPT 
+WHERE EMP.DEPTNO = DEPT.DEPTNO ;
+
+SELECT  a.ord_no,a.purch_amt,
+b.cust_name,b.city 
+FROM orders a,customer b 
+WHERE a.customer_id=b.customer_id 
+AND a.purch_amt BETWEEN 500 AND 2000;
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.commission 
+FROM customer a 
+INNER JOIN salesman b 
+ON a.salesman_id=b.salesman_id;
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.commission 
+FROM customer a 
+INNER JOIN salesman b 
+ON a.salesman_id=b.salesman_id 
+WHERE b.commission>.12;
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.city,b.commission  
+FROM customer a  
+INNER JOIN salesman b  
+ON a.salesman_id=b.salesman_id 
+WHERE b.commission>.12 
+AND a.city<>b.city;
+
+Display the total information of the emps along with Grades in the asc order.
+select *from emp e,salgrade s
+where e.sal between s.losal and s.hisal
+order by grades asc;
+
+select *from salgrade;
+Display the total information of the emps along with Grades in the asc order.
+select *from emp e,salgrade s
+where e.sal between s.losal and s.hisal
+order by grades asc;
+
+select *from salgrade;
+Display the total information of the emps along with Grades in the asc order.
+select *from emp e,salgrade s
+where e.sal between s.losal and s.hisal
+order by grades asc;
+
+How can I create an empty table emp1 with same structure as emp?
+create table  empsam1 as(select * from  emp where(1:1));
+
+create table empsam1 as(select *from emp where(1:2));
+to create empty table without structure
+
+
+ List the emps whose Sal is four digit number ending with Zero
+select *from emp where sal like' ___0';
+
+List the Enames those are starting with ‘S’ and with five characters
+
+select ename from emp where ename like '____S';
+
+ Display the Employees Names, DNames of Employees, DLoc of Employees.
+Managers Names, DNames of Managers and DLocs of Managers?
+
+select e.ename,d.dname,d.loc,e1.ename m_name,d1.dname m_dname,d1.loc m_loc
+from emp e,dept d,emp e1,dept d1
+where e.deptno=d.deptno
+and e.mgr=e1.empno
+and e1.deptno=d1.deptno;
+
+
+Write a SQL statement to make a list in ascending order for the customer who holds a grade less than
+300 and works either through a salesman or by own.
+select *from customer natural join salesman natural join orders;
+
+

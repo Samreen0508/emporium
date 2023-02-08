@@ -1,0 +1,87 @@
+select substr('samreen@startapps.com',1,instr('samreen@startapps.com','@')-1)  name,
+substr('samreen@startapps.com',instr('samreen@startapps.com','@'),instr('samreen@startapps.com','.')-instr('samreen@startapps.com','@')) domain,
+substr('samreen@startapps.com',instr('samreen@startapps.com','.')) ending
+from dual;
+
+select * from (select ename,rownum r,sal,job from emp) where r>=(select (count(*)-4) from emp);----last records
+
+select ename,sal from emp e where 3-1=(select sal from emp e1) where e1.emp,e.emp;
+
+select * from (select ename,rownum r,sal,job from emp) where r>=(select (count(*)-4) from emp);
+select * from (select ename,rownum r,sal,job from emp) where r>(select (count(*)-4) from emp);
+select * from (select ename,rownum r,sal,job from emp) where r<(select (count(*)-4) from emp);
+select * from (select ename,rownum r,sal,job from emp) where r>=4;
+
+select ename,sal,
+(case
+when sal <800 then 'poor'
+when sal between 1500 and 1700 then 'average'
+when sal >2500 then 'good'
+when sal >3000 then 'execellent'
+end) grade from emp;
+select lpad(9876,7,'*') from dual;
+select lpad(sal,5,'*') from emp;
+
+select lpad(substr(ename,1,2),'5','*') from emp
+
+select decode
+
+select ename,sal from emp e1
+where(select count(distinct sal) from emp e2
+where e1.sal<e2.sal)=5;
+
+select ename,sal from emp e1
+where (select count(distinct sal) from emp e2
+where e1.sal>e2.sal)=5;
+
+select ename,sal from emp e1
+where(select count(distinct sal) from emp e2
+where e1.sal<e2.sal)=5;
+
+select ename,sal from emp e1
+where (select count(distinct sal) from emp e2
+where e1.sal>e2.sal)=5;
+
+select substr(ename,-1,3) from emp;
+
+select substr(ename,-2,2) from emp;
+
+select substr(ename,-3,2) from emp;
+
+select substr(ename,-1,3) from emp;
+
+select substr(ename,-4,2) from emp;
+
+Display all the first name and position of a in that name (first occurrence of a).  
+select ename, instr(ename,'a',1) from emp;
+
+Display all the first name and position of a in that name (second occurrence of a)
+
+SELECT First_Name,instr(First_name,'a',1,2) FROM employees;  
+
+Display all the name which contain two or more number of a 's in the first name.
+
+SELECT First_Name,instr(First_name,'a',1,2) from employees where instr(First_name,'a',1,2)<>0 
+
+
+ow to display months between two given date.
+
+select months_between('12-jan-2016','12-dec-2016')from dual;
+
+Write a query to display today's date.
+
+Select sysdate from dual;
+
+Write a query to display the date after 3 months from today.
+
+Select add_months(sysdate, 3) from dual;
+
+Display last date of the current month.
+
+Select last_day(sysdate)from dual; 
+
+Display the up coming Wednesday date.
+
+Select next_day(sysdate,'wednesday') from dual; 
+
+

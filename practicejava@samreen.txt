@@ -1,0 +1,177 @@
+Control statements in java:-
+
+A control statement in java is a statement that determines whether the other statements will be 
+executed or not. It controls the flow of a program.
+Java provides three types of control flow statements.
+
+1.Decision making statements
+if statements
+switch statement
+
+2.Loop statements
+do while loop
+while loop
+for loop
+for-each loop
+
+3.Jump statements
+break statement
+continue statement
+
+if statement:-
+The IF statement is a decision-making statement that guides a program to make decisions based on specified criteria. 
+The IF statement executes one set of code if a specified condition is met (TRUE) or another set of code evaluates to FALSE.
+syntax of if statement is given below.
+
+if(condition) {    
+statement 1; //executes when condition is true   
+}    
+
+2) if-else statement
+The if-else statement
+is an extension to the if-statement, which uses another block of code, i.e., else block. 
+The else block is executed if the condition of the if-block is evaluated as false.
+Syntax:
+
+if(condition) {    
+statement 1; //executes when condition is true   
+}  
+else{  
+statement 2; //executes when condition is false   
+}  
+
+3) if-else-if ladder:
+The if-else-if statement contains the if-statement followed by multiple else-if statements. 
+In other words, we can say that it is the chain of if-else statements that create a decision tree where the 
+program may enter in the block of code where the condition is true. We can also define an else statement at the end of the chain.
+Syntax of if-else-if statement is given below.
+
+if(condition 1) {    
+statement 1; //executes when condition 1 is true   
+}  
+else if(condition 2) {  
+statement 2; //executes when condition 2 is true   
+}  
+else {  
+statement 2; //executes when all the conditions are false   
+} 
+ 
+4. Nested if-statement:-
+In nested if-statements, the if statement can contain a if or if-else statement inside another if or else-if statement.
+
+Syntax of Nested if-statement is given below.
+
+if(condition 1) {    
+statement 1; //executes when condition 1 is true   
+if(condition 2) {  
+statement 2; //executes when condition 2 is true   
+}  
+else{  
+statement 2; //executes when condition 2 is false   
+}  
+} 
+
+Switch Statement:
+In Java, Switch statements
+are similar to if-else-if statements. The switch statement contains multiple blocks of code called cases 
+and a single case is executed based on the variable which is being switched. The switch statement is easier to use
+ instead of if-else-if statements. It also enhances the readability of the program 
+The syntax to use the switch statement is given below.
+
+switch (expression){  
+    case value1:  
+     statement1;  
+     break;  
+    .  
+    .  
+    .  
+    case valueN:  
+     statementN;  
+
+
+
+
+
+
+
+
+     break;  
+    default:  
+     default statement;  
+} 
+For loop:- 
+It enables us to initialize the loop variable, check the condition, and increment/decrement in a single line of code.
+ We use the for loop only when we exactly know the number of times, we want to execute the block of code.
+Syntax
+for(initialization, condition, increment/decrement) {    
+//block of statements    
+}    
+
+Java for-each loop:-
+Java provides an enhanced for loop to traverse the data structures like array or collection.
+ In the for-each loop, we don't need to update the loop variable. The syntax to use the for-each loop in java is given below.
+
+for(data_type var : array_name/collection_name){    
+//statements    
+}
+
+
+Java while loop
+The while loop
+is also used to iterate over the number of statements multiple times. However, if we don't know the
+number of iterations in advance, it is recommended to use a while loop. 
+do     
+{    
+//statements    
+} while (condition);  
+
+Java break statement
+As the name suggests, the break statement
+is used to break the current flow of the program and transfer the control to the next statement outside a loop
+ or switch statement
+
+Java continue statement
+Unlike break statement, the continue statement
+doesn't break the loop, whereas, it skips the specific part of the loop and jumps to the next iteration 
+of the loop immediately.
+
+JVM
+Java Virtual Machine, or JVM, loads, verifies and executes Java bytecode. It is known as the interpreter or 
+the core of Java programming language because
+ it executes Java programming.
+ JVM performs following operation:
+
+Loads code
+Verifies code
+Executes code
+Provides runtime environment
+
+JVM provides definitions for the:
+Memory area
+Class file format
+Register set
+Garbage-collected heap
+Fatal error reporting etc.
+
+JRE
+The Java Runtime Environment (JRE) is software that Java programs require to run correctly. 
+Java is a computer language that powers many current web and mobile applications. 
+The JRE is the underlying technology that communicates between the 
+Java program and the operating system
+The JRE is the on-disk system that takes your Java code, combines it with the necessary libraries,
+ and starts the JVM to execute it. The JRE contains libraries and software that your Java programs need to run. 
+As an example, the Java class loader is part of the Java Runtime Environment.
+
+ 
+int i=1;
+		while(i<5) {
+			int j=1;
+			i++;
+			while(j<i) {
+			System.out.print(j+" ");
+			j++;
+			}
+			System.out.println();
+		}
+by using while loop.
+   

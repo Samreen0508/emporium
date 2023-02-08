@@ -1,0 +1,34 @@
+Assume that a bank maintains 2 kinds of accounts for its customers, one called
+savings account & the other current account. The savings account provides
+compound interest & withdrawal facilities but no cheque book facility. The
+current account provides cheque book facility but no interest. Current account
+holders should maintain a minimum balance & if the balance falls below this
+level, a service charge is imposed.
+Create a class Account that store customer name, account number, and type of
+account. From this derive the classes Curr-acc & Sav-acc to make them more
+specific to their requirements. Include necessary methods in order to achieve the
+following tasks.
+a) Accept deposit from a customer & update the balance
+b) Display the balance
+c) Compute & deposit interest
+d) Permit withdrawal & update the balance
+e) Check for the minimum balance, impose penalty if necessary & update the
+balance
+Do not use constructors. Use methods to initialize the class members.
+
+Take capital of india as input and if it is not Delhi then throw an exception
+
+Create a program to store Create a program to store 
+Create a Vector object that can hold any type of object : Student or Teacher or HOD. Write a java code that creates these objects and inserts them into the list. Make sure that toString() is overridden in all the classes. Print out the list that displays the string representation of the object. It should also print the object type such as Student, Teacher or HOD. 
+	
+(hint : use instanceof to determine the type of object)
+
+Create a Vector object that can hold any type of object : Student or Teacher or HOD.
+ Write a java code that creates these objects and inserts them into the list.
+ Make sure that toString() is overridden in all the classes. Print out the list that displays the string representation of the object. It should also print the object type such as Student, Teacher or HOD. 
+	
+(hint : use instanceof to determine the type of object)
+Create a program to store 
+Create a Vector object that can hold any type of object : Student or Teacher or HOD. Write a java code that creates these objects and inserts them into the list. Make sure that toString() is overridden in all the classes. Print out the list that displays the string representation of the object. It should also print the object type such as Student, Teacher or HOD. 
+	
+(hint : use instanceof to determine the type of object)

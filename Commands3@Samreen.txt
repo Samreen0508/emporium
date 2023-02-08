@@ -1,0 +1,23 @@
+SUBQUERIES:-
+
+select empno,ename,job from emp where ename  in (select ename from emp where deptno=10);
+
+select empno,ename,job from emp where ename not in (select ename from emp where deptno=10);
+
+select empno,ename,job from emp where job in(select job from emp where deptno=10);
+
+select empno,ename,job from emp where ename  not in (select ename from emp where job like 'C%');
+
+select empno,ename,job from emp where ename   in (select ename from emp where job like 'C%');
+
+AGGREGATE FUNCTIONS
+
+select avg (sal) from emp;
+
+select max(avg (sal))from emp;
+
+select count(distinct deptno)from emp;
+
+select deptno,avg(sal)from emp group by deptno;
+
+select deptno,avg(sal)from emp group by  deptno order by 1;

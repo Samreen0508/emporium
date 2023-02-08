@@ -1,0 +1,143 @@
+sList the last names, first names, and phone numbers of students who do not have
+phone numbers. Display 212-555-1212 for the phone number.
+select last_name,nvl(phone, 212-555-1212) from student_1;
+
+Write a SELECT statement that determines the total number of students enrolled. 
+Count each student only once, no matter how many courses the student is enrolled in.
+select *from enrollment;
+select *from student_1
+select  count(distinct student_id)from enrollment;
+
+Determine the average cost for all courses. If the course cost contains a 
+null value, substitute the value 0.
+select avg(nvl(cost,0)) from course; 
+
+Write a SELECT statement that determines the date of the most recent enrollment.
+select *from enrollment
+select max(enroll_date) from enrollment;
+
+
+Write a SELECT statement that lists the last names of students living in either 
+zip code 10048, 11102, or 11209.
+select last_name from ss1 
+where zip in(10048,11102,11209);
+
+Write a SELECT statement that lists the first and last names of instructors with the letter i 
+(either uppercase or lowercase) in their last name, living in zip code 10025.
+select last_name from instructor 
+where last_name like'%i%' OR LAST_NAME LIKE'%I%'
+and ziP =10025;
+
+Write a SELECT statement that lists descriptions of courses for which 
+there are prerequisites and that cost less than 1100.
+SELECT *FROM COURSE;
+SELECT DESCRIPTION,PREREQUISITE FROM COURSE 
+WHERE  COST <1100;
+
+7.	List the last names, first names, and phone numbers of students who do not have
+phone numbers. Display 212-555-1212 for the phone number.
+select last_name,nvl(phone, 212-555-1212) from student_1;
+
+8.	Write a SELECT statement that determines the total number of students enrolled. 
+Count each student only once, no matter how many courses the student is enrolled in.
+select *from enrollment;
+select *from student_1
+select  count(distinct student_id)from enrollment;
+
+9.	Determine the average cost for all courses. If the course cost contains a 
+null value, substitute the value 0.
+select avg(nvl(cost,0)) from course; 
+
+10.	Write a SELECT statement that determines the date of the most recent enrollment.
+select *from enrollment
+select max(enroll_date) from enrollment;
+
+1.	Write a SELECT statement that lists the last names of students living in either 
+zip code 10048, 11102, or 11209.
+select last_name from ss1 
+where zip in(10048,11102,11209);
+
+2.	Write a SELECT statement that lists the first and last names of instructors with the letter i 
+(either uppercase or lowercase) in their last name, living in zip code 10025.
+select last_name from instructor 
+where last_name like'%i%' OR LAST_NAME LIKE'%I%'
+and ziP =10025;
+
+3.	Write a SELECT statement that lists descriptions of courses for which 
+there are prerequisites and that cost less than 1100.
+SELECT *FROM COURSE;
+SELECT DESCRIPTION,PREREQUISITE FROM COURSE 
+WHERE  COST <1100;
+
+4.	Show the salutation, first name, and last name of students with the last name Grant.
+Order the result by salutation in descending order and by first name in ascending order.
+SELECT SALUTATION,LAST_NAME FROM SS1
+WHERE LAST_NAME LIKE 'Grant'
+ORDER BY SALUTATION DESC
+ORDER BY LAST_NAME;
+select *from ss1;
+
+5.	Write a SQL statement to retrieve students who have a last name with the
+lowercase letter o occurring three or more times.
+select last_name from ss1
+where last_name like '%o%' or last_name like'%oo%' or last_name like '%ooo%';
+
+select last_name from ss1
+where last_name like %o%o%o%
+
+select last_name from ss1 where last_name like'%o%o%o%';
+
+select last_name from ss1
+where last_name like '%o%o%o%';
+6.	Using functions in the SELECT list and WHERE and ORDER BY clauses, write a SELECT statement that returns course numbers and course descriptions from the COURSE table and looks like the following result set. Use the SQL Developer Run Script icon to display the result in fixed-width format.
+Description
+204.......Intro to SQL
+130.......Intro to Unix
+25........Intro to Programming
+230.......Intro to the Internet
+120.......Intro to Java Programming
+240.......Intro to the BASIC Language
+20........Intro to Information Systems
+select rpad(course_no,10,'.')||description as description from course;
+
+  Determine the top three zip codes where most of the students live.
+select zip,count(zip) from ss1
+group by zip
+--having count(zip)>10
+order by count(zip)desc;
+
+6.	Using functions in the SELECT list and WHERE and ORDER BY clauses, write a SELECT statement that returns course numbers and course descriptions from the COURSE table and looks like the following result set. Use the SQL Developer Run Script icon to display the result in fixed-width format.
+Description
+204.......Intro to SQL
+130.......Intro to Unix
+25........Intro to Programming
+230.......Intro to the Internet
+120.......Intro to Java Programming
+240.......Intro to the BASIC Language
+20........Intro to Information Systems
+select rpad(course_no,10,'.')||description as description from course;
+
+11.	Show a list of prerequisites and count how many times each appears in the COURSE table.
+Order the result by the PREREQUISITE column.
+select count( prerequisite) from course
+order by prerequisite;
+
+12.	Show all the different companies for which students work. Display only companies
+in which more than four students are employed.
+select *from ss1;
+select employer,count(employer) from ss1
+group by employer
+having count(employer)>4
+order by count(employer);
+
+
+16.	Select the student ID, course number, enrollment date, and section ID for 
+students who enrolled in course number 20 on January 30, 2007.
+select *from enrollment;
+select *from course;
+select e.student_id,c.course_no.e.enroll_date,e.section_id 
+FROM ENROLLMENT E,COURSE C
+where enroll_date like'30-JAN-07'
+AND COURSE_NO=20;
+
+
